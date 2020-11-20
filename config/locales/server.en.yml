@@ -1,0 +1,3 @@
+en:
+  site_settings:
+    discourse_resize_summary_images_enabled: "Enable DiscourseResizeSummaryImages plugin"

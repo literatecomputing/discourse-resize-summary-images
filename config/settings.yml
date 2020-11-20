@@ -1,0 +1,4 @@
+plugins:
+  discourse_resize_summary_images_enabled:
+    default: true
+    client: true
