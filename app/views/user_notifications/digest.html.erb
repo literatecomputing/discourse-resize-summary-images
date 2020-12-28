@@ -1,5 +1,5 @@
+ 
 <div class="summary-email">
-
 <span class="preheader" style="display:none!important;color:#f3f3f3;font-size:1px;line-height:1px;max-height:0;max-width:0;mso-hide:all!important;opacity:0;overflow:hidden;visibility:hidden">
   <%= @preheader_text %>
 </span>
@@ -24,7 +24,6 @@
     <img src="<%= logo_url %>" height="40" style="clear:both;display:block;height:40px;margin:auto;max-width:100%;outline:0;text-decoration:none;" alt="<%= SiteSetting.title %>">
   <%- end %>
   </a>
-
     </td>
   </tr>
 </table>
@@ -74,8 +73,6 @@
 </table>
 
 <center class="header-popular-topics with-accent-colors" style="font-size:22px;font-weight:400;margin-bottom: 8px; mso-line-height-rule:exactly;line-height:36px;"><%=t 'user_notifications.digest.popular_topics' %></center>
-
-
             </td>
           </tr>
         </tbody>
@@ -116,7 +113,7 @@
         <%- if SiteSetting.show_topic_featured_link_in_digest && t.featured_link %>
           <a class='topic-featured-link' href='<%= t.featured_link %>'><%= raw topic_featured_link_domain(t.featured_link) %></a>
         <%- end %>
-      </td>
+     </td>
     </tr>
   </tbody>
 </table>
@@ -134,10 +131,10 @@
           <% end %>
           <p class="digest-topic-name" style="color:inherit;font-size:14px;font-weight:400;line-height:1.3;margin:0 0 8px 0;padding:0;word-wrap:normal;"><%= t.user.username -%></p>
         <% end %>
-      </td>
+   </td>
       <%- if show_image_with_url(t.image_url) && t.featured_link.nil? && !(@excerpts[t.first_post&.id]||"").include?(t.image_url) -%>
         <td style="margin:0;padding:<%= rtl? ? '0 8px 0 16px' : '0 16px 0 8px' %>;vertical-align:top;" align="right">
-          <img src="<%= url_for_email(t.image_url) -%>" height="64" style="margin:auto;max-height:64px;max-width:100%;outline:0;text-decoration:none;" alt="topic image">
+          <img src="<%= url_for_email(t.image_url) -%>" height="400px" style="margin:auto;max-height:400px;max-width:100%;outline:0;text-decoration:none;" alt="topic image">
         </td>
       <%- end -%>
     </tr>
@@ -150,7 +147,7 @@
     <tr>
       <td class="post-excerpt" style="color:#0a0a0a;font-size:14px;padding:0 16px 0 16px;width:100%;font-weight:normal;mso-padding-alt: 16px;">
         <%= @excerpts[t.first_post.id] %>
-      </td>
+   </td>
     </tr>
   </tbody>
 </table>
@@ -194,16 +191,14 @@
 <% if i < 5 %>
 <%= digest_custom_html("below_post_#{i+1}") %>
 <% end %>
-
 <% end %>
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </td>
-    <td class="side-spacer" style="width:5%;vertical-align:top;padding:0;">
-      <!-- Background that goes down part-way behind content -->
+</td>
+     </tr>
+     </tbody>
+  </table>
+</td>
+<td class="side-spacer" style="width:5%;vertical-align:top;padding:0;">
+    <!-- Background that goes down part-way behind content -->
       <div class="with-accent-colors">
         <table class="spacer with-dir with-accent-colors" style="border-spacing:0;padding:0;width:100%">
           <tbody>
@@ -255,14 +250,14 @@
   <tbody>
     <tr>
       <td style="padding:0 8px 8px 8px;width:50px;vertical-align:top;">
-        <img src="<%= post.user.small_avatar_url -%>" style="border-radius:50%;clear:both;display:block;height:50px;width:50px;outline:0;" alt="<%= post.user.username -%>">
+        <img src="<%= post.user.small_avatar_url -%>" style="vertical-align: top;border-radius:50%;clear:both;display:block;height:50px;width:50px;outline:0;" alt="<%= post.user.username -%>">
       </td>
       <td style="color:#0a0a0a;line-height:1.3;padding:0 8px 8px 8px;vertical-align:top;">
         <% if post.user %>
           <% if SiteSetting.enable_names? && post.user.name && post.user.name.downcase != post.user.username.downcase %>
             <h6 style="color:inherit;line-height:1.3;margin:0;padding:0;font-weight: normal;font-size:16px;"><%= post.user.name -%></h6>
           <% end %>
-          <p style="color:inherit;font-size:14px;font-weight:400;line-height:1.3;margin:0 0 8px 0;padding:0;word-wrap:normal;"><%= post.user.username -%></p>
+          <p style="color:inherit;font-size:14px;font-weight:400;line-height:1.3;margin:0 0 8px 20px;padding:0;word-wrap:normal;"><%= post.user.username -%></p>
         <% end %>
       </td>
       <td style="color:#0a0a0a;line-height:1.3;padding:0 8px 8px 8px;text-align:<%= rtl? ? 'left' : 'right' %>;">
@@ -285,7 +280,6 @@
 <!--   End of Popular Post   -->
 
 <% end %>
-
     </td>
     <td class="side-spacer" style="width:5%;padding:0;">&nbsp;</td>
   </tr>
@@ -347,60 +341,11 @@
 
 </tbody>
 </table>
-
     </td>
     <td class="side-spacer" style="width:5%;padding:0;">&nbsp;</td>
   </tr>
 </table>
-
 <% end %>
-
-<%= digest_custom_html("below_popular_topics") %>
-
-
-    </td>
-    <td class="side-spacer" style="width:5%;padding:0;">&nbsp;</td>
-  </tr>
-</table>
-<style>
-  @media only screen {
-    html {
-      min-height: 100%;
-      background: #f3f3f3
-    }
-  }
-
-  @media only screen and (max-width:900px) {
-    table.body img {
-      width: auto;
-      height: auto
-    }
-    table.body center {
-      min-width: 0!important;
-    }
-    table.body .side-spacer {
-      width: 2.5%!important;
-    }
-    table.body .column,
-    table.body .columns {
-      height: auto!important;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      padding-left: 16px!important;
-      padding-right: 16px!important
-    }
-    table.body .column .column,
-    table.body .column .columns,
-    table.body .columns .column,
-    table.body .columns .columns {
-      padding-left: 0!important;
-      padding-right: 0!important
-    }
-  }
-</style>
-
-
 <%= digest_custom_html("above_footer") %>
 
 <table class='summary-footer with-dir' style="width: 100%">
